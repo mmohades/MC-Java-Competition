@@ -8,11 +8,12 @@ public class Team {
 
     private int number;
 
-    private ArrayList<Student> teamMembers;
-    private HashMap<String, Integer> problemsMap = new HashMap<String, Integer>();
+    private ArrayList<Student> teamMembers = new ArrayList<>();
+    private HashMap<String, Integer> problemsMap = new HashMap<>();
 
 
     public Team(int number){
+        initProblems();
         this.number = number;
     }
 

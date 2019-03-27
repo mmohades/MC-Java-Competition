@@ -37,11 +37,6 @@ public class Student {
 
 
 
-
-
-
-
-
     /**
      * Only once team can be set
      * @param team team of student
