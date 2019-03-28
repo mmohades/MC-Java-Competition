@@ -5,6 +5,7 @@ import Models.FileFormatException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.stage.FileChooser;
 
@@ -19,6 +20,8 @@ import java.util.List;
 public class MainViewController {
 
 
+    @FXML
+    private Label descriptionLabel, titleLabel;
     private List<File> files;
 
     @FXML
@@ -29,6 +32,7 @@ public class MainViewController {
     @FXML
     public void initialize() {
 
+        exportResultButton.setDisable(true);
         importFilesButton.setTooltip(new Tooltip("Import two CSV Files"));
         exportResultButton.setTooltip(new Tooltip("Export the competition result"));
 
@@ -41,10 +45,15 @@ public class MainViewController {
         List<File> files = fileChooser("Import Judges and Students info","", true);
 
 
-        if(files.size() != 2)
+        if(files != null && files.size() != 2)
                 showError("You didn't choose two files. Please only choose judges info and student ino CSV files.");
-        else
-            this.files = files;
+        else {
+            if(files!=null) {
+
+                this.files = files;
+                exportResultButton.setDisable(false);
+            }
+        }
 
 
 
@@ -57,7 +66,11 @@ public class MainViewController {
         CSVController csvController = new CSVController();
         String out = "test.csv";
 
-        if(this.files.size()==2) {
+        exportResultButton.setDisable(true);
+
+
+
+        if(this.files != null && this.files.size()==2) {
 
 
             List<File> files = fileChooser("Export Result","Competition Result",
@@ -87,9 +100,9 @@ public class MainViewController {
 
         }
         else
-            showError("something went wrong");
+            showError("Not enough input is given. Please import two files first.");
 
-            
+        this.files = null;
 
     }
 

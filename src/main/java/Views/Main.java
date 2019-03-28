@@ -13,12 +13,15 @@ public class Main extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/MainView.fxml"));
 
-            primaryStage.setTitle("Welcome");
+            primaryStage.setTitle("MC JAVA Competition");
 
-            primaryStage.setScene(new Scene(root, 620, 300));
-
+            Scene scene = new Scene(root, 640, 340);
+            scene.getStylesheets().add("MyStyle.css");
+            primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (Exception e) {
+        }
+
+        catch (Exception e) {
             e.printStackTrace();
         }
 
