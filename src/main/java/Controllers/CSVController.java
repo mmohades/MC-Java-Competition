@@ -13,11 +13,11 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 
 
-public class CSVController {
+class CSVController {
 
 
 
-    public void export(File file1, File file2, File outputFile) throws IOException, FileFormatException {
+     void export(File file1, File file2, File outputFile) throws IOException, FileFormatException {
 
 
         HashMap<FileType, File> files = distinguishFiles( new File[] {file1, file2});
@@ -38,6 +38,7 @@ public class CSVController {
 
         HashMap<Integer, Team> teams = readStudentsInformation(studentsData);
         updateScores(teams, judgesData);
+        updatePlace(teams);
 
         return teams;
 
@@ -155,13 +156,14 @@ public class CSVController {
 
                 result.append(entry.getValue());
 
-
         return result.toString();
     }
 
-    private void updatePlace(){
+    private void updatePlace(HashMap<Integer, Team> teams){
 
         //TODO: Update students place by their score
+
+
 
 
     }

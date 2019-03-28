@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainViewController {
@@ -37,10 +38,7 @@ public class MainViewController {
     @FXML
     public void importFilesButtonPressed(){
 
-        List<File> files = fileChooser("bede");
-        //TODO: check if there are two files, then check the first title and figure out which is which
-
-
+        List<File> files = fileChooser("Import Judges and Students info","", true);
 
 
         if(files.size() != 2)
@@ -61,16 +59,31 @@ public class MainViewController {
 
         if(this.files.size()==2) {
 
-            try {
-                csvController.export(this.files.get(0), this.files.get(1), new File("out.csv"));
 
-            } catch (IOException e) {
+            List<File> files = fileChooser("Export Result","Competition Result",
+                    false);
 
-                showError(e.getMessage());
+            if(files.size() == 1)
+            {
 
-            } catch (FileFormatException e) {
-                showError(e.getMessage());
+                try {
+                    csvController.export(this.files.get(0), this.files.get(1), files.get(0));
+
+                } catch (IOException e) {
+
+                    showError(e.getMessage());
+
+                } catch (FileFormatException e) {
+                    showError(e.getMessage());
+                }
+
             }
+
+            else{
+
+                showError("Nothing was given as the output. Please only choose one file.");
+            }
+
 
         }
         else
@@ -81,18 +94,29 @@ public class MainViewController {
     }
 
 
-    private List<File> fileChooser(String titleActionText) {
+    private List<File> fileChooser(String titleActionText, String initFileName, boolean allowMultipleFiles) {
+
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialFileName(titleActionText);
-        fileChooser.setTitle("Importing" + titleActionText);
+        List<File> selectedFiles = new ArrayList<>();
+
+        fileChooser.setInitialFileName(initFileName);
+        fileChooser.setTitle(titleActionText);
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV files (*.CSV)", "*.csv");
 
         fileChooser.getExtensionFilters().addAll(extFilter);
-        List<File> selectedFiles = fileChooser.showOpenMultipleDialog(importFilesButton.getScene().getWindow());
+
+        if(allowMultipleFiles)
+
+          selectedFiles = fileChooser.showOpenMultipleDialog(importFilesButton.getScene().getWindow());
+
+        else
+            selectedFiles.add(fileChooser.showSaveDialog(null));
 
 
         return selectedFiles;
     }
+
+
 
     private void showError(String message){
 
