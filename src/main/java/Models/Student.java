@@ -3,7 +3,7 @@ package Models;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Student {
+public class Student{
 
 
     private String name, school, level;
@@ -35,6 +35,11 @@ public class Student {
         return team;
     }
 
+    public Integer getScore(){
+
+        return this.team.calculateScore();
+    }
+
 
 
     /**
@@ -47,6 +52,11 @@ public class Student {
             this.team = team;
         else
             throw new RuntimeException("Team already assigned.");
+    }
+
+    public void setPlace(int place){
+
+        this.place = place;
     }
 
 
@@ -82,4 +92,5 @@ public class Student {
         return false;
 
     }
+
 }

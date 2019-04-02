@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,19 +17,39 @@ import com.opencsv.CSVReaderBuilder;
 class CSVController {
 
 
-
+    /**
+     * The only public method
+     * @param file1
+     * @param file2
+     * @param outputFile
+     * @throws IOException
+     * @throws FileFormatException
+     */
      void export(File file1, File file2, File outputFile) throws IOException, FileFormatException {
 
 
         HashMap<FileType, File> files = distinguishFiles( new File[] {file1, file2});
 
 
+        //read and combine both judges and students information files. return a map of teams with all the team members
+         //in each team.
         HashMap<Integer, Team> team = readData(files.get(FileType.judgesFile), files.get(FileType.studentsInformation));
 
+        //Update the place of all the teams.
+        updatePlace(team);
+
+        //export the result to the exported format, and save the CSV file.
         exportCsv(team, outputFile);
 
     }
 
+    /**
+     *
+     * @param teamsInformation
+     * @param studentInformation
+     * @return
+     * @throws IOException
+     */
     private HashMap<Integer, Team> readData(File teamsInformation, File studentInformation) throws IOException {
 
 
@@ -38,16 +59,18 @@ class CSVController {
 
         HashMap<Integer, Team> teams = readStudentsInformation(studentsData);
         updateScores(teams, judgesData);
-        updatePlace(teams);
 
         return teams;
 
     }
 
 
-
-
-
+    /**
+     *
+     * @param reader
+     * @return
+     * @throws IOException
+     */
 
     private HashMap<Integer, Team> readStudentsInformation(Reader reader) throws IOException {
 
@@ -88,7 +111,12 @@ class CSVController {
     }
 
 
-
+    /**
+     *
+     * @param teams
+     * @param reader
+     * @throws IOException
+     */
     private void updateScores(HashMap<Integer, Team> teams, Reader reader) throws IOException {
 
         //order: Team#, P1, P2, P3, P4, P5, P6
@@ -121,6 +149,79 @@ class CSVController {
     }
 
 
+    /**
+     *
+     * @param sortedArray
+     * @param team
+     */
+    private static void addStudentToSortedArray(ArrayList<Team> sortedArray, Team team){
+
+
+        int index = findSortedIndex(sortedArray, team);
+
+        sortedArray.add(index, team);
+    }
+
+    private static void updatePlace(HashMap<Integer, Team > teamsMap){
+
+        ArrayList<Team> sortedTeams = sortMap(teamsMap);
+        int currentPlace = 0;
+
+
+        for(Team team : sortedTeams){
+
+            currentPlace += 1;
+
+            ArrayList<Student> teamMembers = team.getTeamMembers();
+
+            //for all the students in each team, update their place with the currentPlace value
+            for(Student teamMember : teamMembers){
+
+                teamMember.setPlace(currentPlace);
+            }
+        }
+
+    }
+
+
+
+    private static ArrayList<Team> sortMap(HashMap<Integer, Team > teamsMap) {
+
+
+        ArrayList<Team> result = new ArrayList<>();
+
+        for (Map.Entry<Integer, Team> entry : teamsMap.entrySet())
+
+            addStudentToSortedArray(result, entry.getValue());
+
+
+        return result;
+    }
+
+
+    /**
+     *
+     * @param teams
+     * @param newTeam
+     * @return
+     */
+    private static int findSortedIndex(ArrayList<Team> teams, Team newTeam){
+
+        int index = 0;
+
+        if(teams.isEmpty())
+            return index;
+        for(Team team : teams){
+
+            if(team.compareTo(newTeam) <= 0)
+                return index;
+
+            index++;
+
+        }
+
+        return index;
+    }
 
     private void exportCsv(HashMap<Integer, Team> teams, File file) throws IOException {
 
@@ -159,14 +260,6 @@ class CSVController {
         return result.toString();
     }
 
-    private void updatePlace(HashMap<Integer, Team> teams){
-
-        //TODO: Update students place by their score
-
-
-
-
-    }
 
 
 
@@ -249,6 +342,12 @@ class CSVController {
             return FileType.None;
     }
 
+
+    private static String removeSpace(String str){
+
+
+        return str.replaceAll("\\s+","");
+    }
 
     private static void removeSpaces(String[] line){
 

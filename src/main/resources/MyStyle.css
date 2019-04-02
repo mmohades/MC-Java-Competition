@@ -4,7 +4,7 @@
     -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.7), 6, 0.0, 0, 2);
 
 }
-#exportResultButton, #importFilesButton  {
+#exportResultButton, #importFilesButton, #exitButton  {
     -fx-background-color:
             #090a0c,
             linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),

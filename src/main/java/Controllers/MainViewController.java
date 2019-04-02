@@ -2,6 +2,7 @@ package Controllers;
 
 
 import Models.FileFormatException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -143,4 +144,8 @@ public class MainViewController {
 
     }
 
+    public void exitButtonPressed(ActionEvent actionEvent) {
+
+        System.exit(0);
+    }
 }

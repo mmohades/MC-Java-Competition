@@ -3,7 +3,7 @@ package Models;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Team {
+public class Team implements Comparable<Team>{
 
 
     private int number;
@@ -34,7 +34,7 @@ public class Team {
         return teamMembers;
     }
 
-    public int calculateScore() {
+    public Integer calculateScore() {
 
         int sum = 0;
 
@@ -126,4 +126,9 @@ public class Team {
             return false;
     }
 
+    @Override
+    public int compareTo(Team o) {
+
+        return this.calculateScore().compareTo(o.calculateScore());
+    }
 }
