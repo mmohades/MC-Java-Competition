@@ -81,14 +81,21 @@ public class MainViewController {
             {
 
                 try {
-                    csvController.export(this.files.get(0), this.files.get(1), files.get(0));
+                    boolean result = csvController.export(this.files.get(0), this.files.get(1), files.get(0));
 
-                } catch (IOException e) {
+                    if(result) {
+
+                        Alert info = new Alert(Alert.AlertType.INFORMATION);
+
+                        info.setTitle("Success!");
+                        info.setHeaderText("The competition result exported successfully! :)");
+
+                        info.showAndWait();
+                    }
+                } catch (IOException | FileFormatException e) {
 
                     showError(e.getMessage());
 
-                } catch (FileFormatException e) {
-                    showError(e.getMessage());
                 }
 
             }

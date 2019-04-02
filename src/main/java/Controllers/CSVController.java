@@ -25,7 +25,7 @@ class CSVController {
      * @throws IOException
      * @throws FileFormatException
      */
-     void export(File file1, File file2, File outputFile) throws IOException, FileFormatException {
+     boolean export(File file1, File file2, File outputFile) throws IOException, FileFormatException {
 
 
         HashMap<FileType, File> files = distinguishFiles( new File[] {file1, file2});
@@ -39,8 +39,8 @@ class CSVController {
         updatePlace(team);
 
         //export the result to the exported format, and save the CSV file.
-        exportCsv(team, outputFile);
 
+        return exportCsv(team, outputFile);
     }
 
     /**
@@ -83,12 +83,11 @@ class CSVController {
 
         while ((line = csvReader.readNext()) != null) {
 
-            removeSpaces(line);
 
             if (line.length >= 4) {
 
-                Integer teamNumber = Integer.parseInt(line[2]);
-                Student newStd = new Student(line[0], line[1], line[3]);
+                Integer teamNumber = ModelController.extractNumber(line[2]);
+                Student newStd = new Student(line[0].trim(), line[1].trim(), line[3].trim());
 
                 if(teams.containsKey(teamNumber))
                     teams.get(teamNumber).addMember(newStd);
@@ -128,16 +127,15 @@ class CSVController {
 
         while ((line = csvReader.readNext()) != null) {
 
-            removeSpaces(line);
 
 
-            int teamNumber = Integer.parseInt(line[0]);
+            int teamNumber = ModelController.extractNumber(line[0]);
 
             if(teams.containsKey(teamNumber)){
 
                 //add all the problem's score
                 for(int i = 1; i < 7; i++) {
-                    int score = Integer.parseInt(line[i]);
+                    int score = ModelController.extractNumber(line[i]);
                     teams.get(teamNumber).addProblemScore(i, score);
                 }
 
@@ -223,7 +221,7 @@ class CSVController {
         return index;
     }
 
-    private void exportCsv(HashMap<Integer, Team> teams, File file) throws IOException {
+    private boolean exportCsv(HashMap<Integer, Team> teams, File file) throws IOException {
 
         StringBuilder result = new StringBuilder();
         String allStudentsData = mapToString(teams);
@@ -233,7 +231,7 @@ class CSVController {
         result.append(allStudentsData);
 
         saveFile(result.toString(), file);
-
+        return true;
     }
 
 
@@ -343,11 +341,6 @@ class CSVController {
     }
 
 
-    private static String removeSpace(String str){
-
-
-        return str.replaceAll("\\s+","");
-    }
 
     private static void removeSpaces(String[] line){
 
@@ -361,7 +354,7 @@ class CSVController {
     }
 
 
-    private static void printList(String[] asd){
+    private static void printList(String[] asd ){
 
 
         for(String str : asd){

@@ -15,13 +15,14 @@ public class Main extends Application {
 
             primaryStage.setTitle("MC JAVA Competition");
 
-            Scene scene = new Scene(root, 640, 340);
+            Scene scene = new Scene(root, 660, 362);
             scene.getStylesheets().add("MyStyle.css");
             primaryStage.setScene(scene);
-            primaryStage.show();
-        }
 
-        catch (Exception e) {
+            limitStageSize(primaryStage);
+
+            primaryStage.show();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -29,7 +30,14 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args) {
-        launch(args);
+    private static void limitStageSize(Stage stage) {
+
+
+        stage.setMinHeight(360);
+        stage.setMinWidth(620);
+
+        stage.setMaxHeight(500);
+        stage.setMaxWidth(800);
     }
+
 }

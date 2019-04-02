@@ -42,10 +42,16 @@
             <Button fx:id="importFilesButton" mnemonicParsing="false" onAction="#importFilesButtonPressed" text="Import Student Data" />
          </children>
       </VBox>
-      <HBox alignment="TOP_RIGHT" layoutX="400.0" layoutY="259.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="290.0">
+      <HBox alignment="TOP_RIGHT" layoutX="400.0" layoutY="259.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="290.0">
          <children>
-            <Button fx:id="exportResultButton" mnemonicParsing="false" onAction="#exportResultButtonPressed" text="Export Results" />
-            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonPressed" text="Exit" />
+            <Button fx:id="exportResultButton" mnemonicParsing="false" onAction="#exportResultButtonPressed" text="Export Results">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin></Button>
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonPressed" text="Exit">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin></Button>
          </children>
       </HBox>
 
