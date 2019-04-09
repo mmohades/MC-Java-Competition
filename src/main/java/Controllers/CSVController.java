@@ -12,13 +12,14 @@ import java.util.Map;
 import Models.*;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import Controllers.ModelController.Place;
+
 
 class CSVController {
 
 
     /**
-     * The only public method
+     * The only public method. reads both student and judge data and creates hashmap.
+     * Then it will update the student's places in the map. then it will export or create the result and export it in the file.
      * @param file1
      * @param file2
      * @param outputFile
@@ -66,10 +67,10 @@ class CSVController {
 
 
     /**
-     *
-     * @param reader
-     * @return
-     * @throws IOException
+     * This method reads student personal inforrmation, and create a map of teams using those information.
+     * @param reader : input file, students information file
+     * @return Map(Int, Team)
+     * @throws IOException : In case file not found.
      */
 
     private HashMap<Integer, Team> readStudentsInformation(Reader reader) throws IOException {
@@ -160,6 +161,10 @@ class CSVController {
         sortedArray.add(index, team);
     }
 
+    /**
+     * updating placec of the students happens here. Tail breaker also implemented here.
+     * @param teamsMap
+     */
     private static void updatePlace(HashMap<Integer, Team > teamsMap){
 
         ArrayList<Team> sortedTeams = sortMap(teamsMap);
@@ -176,9 +181,11 @@ class CSVController {
 
             ArrayList<Student> teamMembers = team.getTeamMembers();
 
+
             if(teamMembers.size() > 0)
                 intro = teamMembers.get(0).getLevel().toLowerCase().contains("intro");
-
+                // This means that if there was anything else that didn't have intro in it
+                // it is advance. even if it was empty, it goes by advance.
 
             if(intro){
 
@@ -220,7 +227,11 @@ class CSVController {
     }
 
 
-
+    /**
+     * just a method to sort the items in a map and return a sorted ArrayList of items.
+     * @param teamsMap :
+     * @return a sorted array list of teams
+     */
     private static ArrayList<Team> sortMap(HashMap<Integer, Team > teamsMap) {
 
 
@@ -259,6 +270,13 @@ class CSVController {
         return index;
     }
 
+    /**
+     * this method creates the result, and exports the HashMap to the output csv file.
+     * @param teams
+     * @param file
+     * @return
+     * @throws IOException
+     */
     private boolean exportCsv(HashMap<Integer, Team> teams, File file) throws IOException {
 
         StringBuilder result = new StringBuilder();
@@ -273,6 +291,12 @@ class CSVController {
     }
 
 
+    /**
+     * just a simple method to save a string in a file.
+     * @param content
+     * @param file
+     * @throws IOException
+     */
     private void saveFile(String content, File file) throws IOException {
 
         if (file != null) {
@@ -285,6 +309,11 @@ class CSVController {
     }
 
 
+    /**
+     * this method converts a map to a string.
+     * @param teams
+     * @return
+     */
     private String mapToString(HashMap<Integer, Team> teams){
 
         StringBuilder result = new StringBuilder();
@@ -297,9 +326,13 @@ class CSVController {
     }
 
 
-
-
-
+    /**
+     * this method checks for the csv files header to make sure the input has the correct input.
+     * @param files
+     * @return
+     * @throws IOException
+     * @throws FileFormatException
+     */
     private HashMap<FileType, File> distinguishFiles(File[] files) throws IOException, FileFormatException {
 
         //MAKE SURE THERE ARE TWO ITEMS IN THE ABOVE
@@ -328,7 +361,12 @@ class CSVController {
     }
 
 
-
+    /**
+     * this method checks each file type and returns the filetype, (enum)
+     * @param reader
+     * @return
+     * @throws IOException
+     */
     private static FileType checkFileType(Reader reader) throws IOException {
 
         CSVReader csvReader = new CSVReader(reader, ',');
@@ -379,7 +417,10 @@ class CSVController {
     }
 
 
-
+    /**
+     * this method will remove any space in an array of strings
+     * @param line
+     */
     private static void removeSpaces(String[] line){
 
 
@@ -391,7 +432,10 @@ class CSVController {
 
     }
 
-
+    /**
+     * just a helper method for debugging
+     * @param asd
+     */
     private static void printList(String[] asd ){
 
 

@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
@@ -67,10 +68,9 @@ public class JavaFXCSVTableView {
             = FXCollections.observableArrayList();
  
     public void start(Stage primaryStage, String csvFile) {
-        primaryStage.setTitle("java");
- 
-        Group root = new Group();
- 
+        primaryStage.setTitle("Competition result");
+
+
         TableColumn columnF1 = new TableColumn("Team Number");
         columnF1.setCellValueFactory(
                 new PropertyValueFactory<>("f1"));
@@ -98,17 +98,31 @@ public class JavaFXCSVTableView {
         tableView.setItems(dataList);
         tableView.getColumns().addAll(
                 columnF1, columnF2, columnF3, columnF4, columnF5, columnF6);
- 
-        VBox vBox = new VBox();
-        vBox.setSpacing(10);
-        vBox.getChildren().add(tableView);
- 
-        root.getChildren().add(vBox);
- 
-        primaryStage.setScene(new Scene(root, 700, 250));
+
+
+
+        tableView.prefHeightProperty().bind(primaryStage.heightProperty());
+        tableView.prefWidthProperty().bind(primaryStage.widthProperty());
+
+        primaryStage.setScene(new Scene(tableView, 600, 400));
         primaryStage.show();
- 
         readCSV(csvFile);
+
+// using vbox
+//        Group root = new Group();
+//        VBox vBox = new VBox();
+//        vBox.setSpacing(10);
+//        vBox.getChildren().add(tableView);
+//        vBox.setFillWidth(true);
+        //layout
+//        tableView.setPadding(new Insets(5, 8, 5, 8));
+//        vBox.setPadding(new Insets(5, 8, 5, 8));
+
+//        root.getChildren().add(vBox);
+//
+//        primaryStage.setScene(new Scene(root, 800, 400));
+//        primaryStage.show();
+
     }
  
     private void readCSV(String CsvFile) {
