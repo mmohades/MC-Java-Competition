@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
  
 
-public class JavaFXCSVTableView extends Application {
+public class JavaFXCSVTableView {
  
     public class Record {
         //Assume each record have 6 elements, all String
@@ -67,33 +66,32 @@ public class JavaFXCSVTableView extends Application {
     private final ObservableList<Record> dataList
             = FXCollections.observableArrayList();
  
-    @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage, String csvFile) {
         primaryStage.setTitle("java");
  
         Group root = new Group();
  
-        TableColumn columnF1 = new TableColumn("f1");
+        TableColumn columnF1 = new TableColumn("Team Number");
         columnF1.setCellValueFactory(
                 new PropertyValueFactory<>("f1"));
  
-        TableColumn columnF2 = new TableColumn("f2");
+        TableColumn columnF2 = new TableColumn("Student Name");
         columnF2.setCellValueFactory(
                 new PropertyValueFactory<>("f2"));
  
-        TableColumn columnF3 = new TableColumn("f3");
+        TableColumn columnF3 = new TableColumn("School");
         columnF3.setCellValueFactory(
                 new PropertyValueFactory<>("f3"));
  
-        TableColumn columnF4 = new TableColumn("f4");
+        TableColumn columnF4 = new TableColumn("Level");
         columnF4.setCellValueFactory(
                 new PropertyValueFactory<>("f4"));
  
-        TableColumn columnF5 = new TableColumn("f5");
+        TableColumn columnF5 = new TableColumn("Score");
         columnF5.setCellValueFactory(
                 new PropertyValueFactory<>("f5"));
  
-        TableColumn columnF6 = new TableColumn("f6");
+        TableColumn columnF6 = new TableColumn("Place");
         columnF6.setCellValueFactory(
                 new PropertyValueFactory<>("f6"));
  
@@ -110,12 +108,11 @@ public class JavaFXCSVTableView extends Application {
         primaryStage.setScene(new Scene(root, 700, 250));
         primaryStage.show();
  
-        readCSV();
+        readCSV(csvFile);
     }
  
-    private void readCSV() {
+    private void readCSV(String CsvFile) {
  
-        String CsvFile = "/Users/mamali/Desktop/competition/src/main/java/Models/data/test/Competition Result.csv";
         String FieldDelimiter = ",";
  
         BufferedReader br;
@@ -124,12 +121,20 @@ public class JavaFXCSVTableView extends Application {
             br = new BufferedReader(new FileReader(CsvFile));
  
             String line;
+            boolean firstLine = true;
+
             while ((line = br.readLine()) != null) {
-                String[] fields = line.split(FieldDelimiter, -1);
- 
-                Record record = new Record(fields[0], fields[1], fields[2],
-                        fields[3], fields[4], fields[5]);
-                dataList.add(record);
+
+                if(firstLine)
+                    firstLine = false;
+
+                else {
+                    String[] fields = line.split(FieldDelimiter, -1);
+
+                    Record record = new Record(fields[0], fields[1], fields[2],
+                            fields[3], fields[4], fields[5]);
+                    dataList.add(record);
+                }
  
             }
  
@@ -142,9 +147,6 @@ public class JavaFXCSVTableView extends Application {
         }
  
     }
- 
-    public static void main(String[] args) {
-        launch(args);
-    }
+
  
 }

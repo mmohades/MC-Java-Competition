@@ -1,7 +1,5 @@
 package Models;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class Student{
 
@@ -10,13 +8,16 @@ public class Student{
     private int id, place;
     private Team team;
 
-    //TODO: consider place in both student and team.
-
 
     public Student(){ }
 
 
-
+    /**
+     *
+     * @param name
+     * @param school
+     * @param level
+     */
     public Student(String name, String school, String level){
 
         this.name = name;
@@ -80,7 +81,7 @@ public class Student{
     @Override
     public int hashCode() {
 
-        return this.id;
+        return this.name.hashCode();
     }
 
     @Override

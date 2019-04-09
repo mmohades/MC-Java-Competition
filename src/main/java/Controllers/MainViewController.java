@@ -2,6 +2,7 @@ package Controllers;
 
 
 import Models.FileFormatException;
+import Views.JavaFXCSVTableView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -9,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -74,22 +76,24 @@ public class MainViewController {
         if(this.files != null && this.files.size()==2) {
 
 
-            List<File> files = fileChooser("Export Result","Competition Result",
+            List<File> outputFile = fileChooser("Export Result","Competition Result",
                     false);
 
-            if(files.size() == 1)
+            if(outputFile.size() == 1)
             {
 
                 try {
-                    boolean result = csvController.export(this.files.get(0), this.files.get(1), files.get(0));
+                    boolean sucess = csvController.export(this.files.get(0), this.files.get(1), outputFile.get(0));
 
-                    if(result) {
+                    if(sucess) {
 
                         Alert info = new Alert(Alert.AlertType.INFORMATION);
 
                         info.setTitle("Success!");
                         info.setHeaderText("The competition result exported successfully! :)");
+                        JavaFXCSVTableView showResult = new JavaFXCSVTableView();
 
+                        showResult.start(new Stage(), outputFile.get(0).getPath());
                         info.showAndWait();
                     }
                 } catch (IOException | FileFormatException e) {

@@ -12,7 +12,7 @@ import java.util.Map;
 import Models.*;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-
+import Controllers.ModelController.Place;
 
 class CSVController {
 
@@ -163,20 +163,58 @@ class CSVController {
     private static void updatePlace(HashMap<Integer, Team > teamsMap){
 
         ArrayList<Team> sortedTeams = sortMap(teamsMap);
-        int currentPlace = 0;
 
+        int currentIntroPlace = 0;
+        int currentAdvPlace   = 0;
+        Team prevIntroTeam  = null;
+        Team prevAdvTeam  = null;
+
+
+        boolean intro = true;
 
         for(Team team : sortedTeams){
 
-            currentPlace += 1;
-
             ArrayList<Student> teamMembers = team.getTeamMembers();
 
-            //for all the students in each team, update their place with the currentPlace value
-            for(Student teamMember : teamMembers){
+            if(teamMembers.size() > 0)
+                intro = teamMembers.get(0).getLevel().toLowerCase().contains("intro");
 
-                teamMember.setPlace(currentPlace);
+
+            if(intro){
+
+                if(prevIntroTeam == null)
+                    currentIntroPlace += 1;
+                else
+                    if(!prevIntroTeam.calculateScore().equals(team.calculateScore()))
+                        currentIntroPlace += 1;
+
+                prevIntroTeam = team;
+
+                for(Student teamMember : teamMembers){
+
+                    teamMember.setPlace(currentIntroPlace);
+
+                }
             }
+            else{
+
+                if(prevAdvTeam == null)
+                    currentAdvPlace += 1;
+                else
+                if(!prevAdvTeam.calculateScore().equals(team.calculateScore()))
+                    currentAdvPlace += 1;
+
+                prevAdvTeam = team;
+
+                for(Student teamMember : teamMembers){
+
+                    teamMember.setPlace(currentAdvPlace);
+
+                }
+            }
+
+
+
         }
 
     }
@@ -365,4 +403,7 @@ class CSVController {
         System.out.println("\n");
 
     }
+
+
+
 }
