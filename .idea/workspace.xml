@@ -7,16 +7,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec8adf35-3fd9-451e-a991-74ae55f8cbf1" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Models/OverSizedTeamException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/score_calculator_jar/score-calculator.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/score_calculator_jar/score-calculator.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/score_calculator_jar/score-calculator.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/CSVController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/CSVController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ModelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/ModelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Views/JavaFXCSVTableView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Views/JavaFXCSVTableView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/data/test/Competition Result.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/data/test/Competition Result.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/data/test/judges data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/data/test/judges data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/data/test/students information.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/data/test/students information.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Models/data/untouched/students information.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Models/data/untouched/students information.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Controllers/CSVController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/CSVController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/ModelController$Place.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/ModelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/ModelController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Views/JavaFXCSVTableView$Record.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Views/JavaFXCSVTableView$Record.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Views/JavaFXCSVTableView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Views/JavaFXCSVTableView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Controllers/MainViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controllers/MainViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Models/Team.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Models/Team.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -32,14 +35,80 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="JavaFXCSVTableView.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JavaFXCSVTableView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Views/JavaFXCSVTableView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="119" column="10" lean-forward="true" selection-start-line="119" selection-start-column="10" selection-end-line="122" selection-end-column="30" />
+            <state relative-caret-position="457">
+              <caret line="68" column="1" lean-forward="true" selection-start-line="68" selection-end-line="69" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CSVController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/CSVController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="361" column="33" selection-start-line="361" selection-start-column="33" selection-end-line="361" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ModelController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/ModelController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="26" lean-forward="true" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainViewController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/MainViewController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="117" column="23" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Team.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Models/Team.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OverSizedTeamException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Models/OverSizedTeamException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="2" column="35" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Student.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Models/Student.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="129">
+              <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="students information.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Models/data/untouched/students information.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -57,10 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>newBufferedReader</find>
-      <find>csvreader</find>
-      <find>line</find>
-      <find />
       <find>public</find>
       <find>files</find>
       <find>one of the fi</find>
@@ -87,6 +152,10 @@
       <find>place</find>
       <find>updateplace</find>
       <find>contains</find>
+      <find>first name</find>
+      <find>addmem</find>
+      <find>number</find>
+      <find>teamnumber</find>
     </findStrings>
     <replaceStrings>
       <replace>exportResultButton</replace>
@@ -120,15 +189,16 @@
         <option value="$PROJECT_DIR$/src/main/java/Models/FileFormatException.java" />
         <option value="$PROJECT_DIR$/src/main/resources/MyStle.css" />
         <option value="$PROJECT_DIR$/src/main/resources/MainView.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/Models/Team.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/MyStyle.css" />
         <option value="$PROJECT_DIR$/src/main/java/Views/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controllers/MainViewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Models/Student.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Controllers/CSVController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controllers/ModelController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Views/JavaFXCSVTableView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Models/OverSizedTeamException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Models/Team.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controllers/MainViewController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Controllers/CSVController.java" />
       </list>
     </option>
   </component>
@@ -179,6 +249,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -218,22 +291,21 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Views" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="score-calculator" type="b2602c69:ProjectViewProjectNode" />
               <item name="competition" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -268,7 +340,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JAR Application.score-calculator.jar">
     <configuration name="JavaFXCSVTableView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Views.JavaFXCSVTableView" />
       <module name="score-calculator" />
@@ -352,9 +424,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JAR Application.score-calculator.jar" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.JavaFXCSVTableView" />
-        <item itemvalue="JAR Application.score-calculator.jar" />
         <item itemvalue="Application.ModelController" />
         <item itemvalue="JAR Application.score-calculator-1.0-SNAPSHOT.jar" />
       </list>
@@ -410,12 +482,14 @@
       <workItem from="1554575995842" duration="19000" />
       <workItem from="1554694101126" duration="233000" />
       <workItem from="1554816322229" duration="525000" />
-      <workItem from="1554816872312" duration="2196000" />
+      <workItem from="1554816872312" duration="2983000" />
+      <workItem from="1554939324125" duration="3000" />
+      <workItem from="1554995643532" duration="3388000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65315000" />
+    <option name="totallyTimeSpent" value="69493000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="934" extended-state="0" />
@@ -435,7 +509,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1984127" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2032967" />
       <window_info anchor="bottom" id="Docker" order="7" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="Google Cloud Storage" order="3" weight="0.32967034" />
@@ -444,7 +518,7 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39904422" />
       <window_info anchor="bottom" id="Thumbnails" order="8" weight="0.32932693" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -463,24 +537,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/CSVController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Models/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Models/Team.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1320">
@@ -634,13 +694,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/logo.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Models/Team.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1442">
-          <caret line="94" column="25" lean-forward="true" selection-start-line="94" selection-start-column="25" selection-end-line="94" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/maven/lib/maven.jar!/schemas/maven-4.0.0.xsd">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
@@ -707,44 +760,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Models/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Models/data/test/Competition Result.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/ModelController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Models/data/untouched/students information.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="30">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/CSVController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Models/OverSizedTeamException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4949">
-          <caret line="435" column="41" selection-start-line="435" selection-start-column="41" selection-end-line="435" selection-end-column="41" />
+        <state relative-caret-position="36">
+          <caret line="2" column="35" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Views/JavaFXCSVTableView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="68" column="1" lean-forward="true" selection-start-line="68" selection-end-line="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/MainViewController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Models/Student.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-96">
-          <caret line="129" selection-start-line="129" selection-end-line="129" />
+        <state relative-caret-position="129">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Views/JavaFXCSVTableView.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Models/Team.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="119" column="10" lean-forward="true" selection-start-line="119" selection-start-column="10" selection-end-line="122" selection-end-column="30" />
+        <state relative-caret-position="325">
+          <caret line="54" column="21" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/MainViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="117" column="23" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/ModelController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="26" lean-forward="true" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Controllers/CSVController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="361" column="33" selection-start-line="361" selection-start-column="33" selection-end-line="361" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

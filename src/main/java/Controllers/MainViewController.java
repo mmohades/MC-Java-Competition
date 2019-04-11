@@ -2,6 +2,7 @@ package Controllers;
 
 
 import Models.FileFormatException;
+import Models.OverSizedTeamException;
 import Views.JavaFXCSVTableView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -96,7 +97,7 @@ public class MainViewController {
                         showResult.start(new Stage(), outputFile.get(0).getPath());
                         info.showAndWait();
                     }
-                } catch (IOException | FileFormatException e) {
+                } catch (IOException | FileFormatException | OverSizedTeamException e) {
 
                     showError(e.getMessage());
 

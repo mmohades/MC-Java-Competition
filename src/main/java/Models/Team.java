@@ -52,10 +52,10 @@ public class Team implements Comparable<Team>{
      *
      * @param st1: Student
      */
-    public void addMember(Student st1){
+    public void addMember(Student st1) throws OverSizedTeamException{
 
         if (teamMembers.size() >=2)
-            throw new RuntimeException("There are more than two students in the team");
+            throw new OverSizedTeamException(number, teamMembers.get(0).getLevel());
 
         teamMembers.add(st1);
         st1.setTeam(this);

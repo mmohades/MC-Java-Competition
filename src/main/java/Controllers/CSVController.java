@@ -26,7 +26,7 @@ class CSVController {
      * @throws IOException
      * @throws FileFormatException
      */
-     boolean export(File file1, File file2, File outputFile) throws IOException, FileFormatException {
+     boolean export(File file1, File file2, File outputFile) throws IOException, FileFormatException, OverSizedTeamException {
 
 
         HashMap<FileType, File> files = distinguishFiles( new File[] {file1, file2});
@@ -51,7 +51,7 @@ class CSVController {
      * @return
      * @throws IOException
      */
-    private HashMap<Integer, Team> readData(File teamsInformation, File studentInformation) throws IOException {
+    private HashMap<Integer, Team> readData(File teamsInformation, File studentInformation) throws IOException, OverSizedTeamException {
 
 
         Reader studentsData = Files.newBufferedReader(studentInformation.toPath());
@@ -73,11 +73,17 @@ class CSVController {
      * @throws IOException : In case file not found.
      */
 
-    private HashMap<Integer, Team> readStudentsInformation(Reader reader) throws IOException {
+    private HashMap<Integer, Team> readStudentsInformation(Reader reader) throws IOException, OverSizedTeamException {
 
         HashMap<Integer,Team> teams = new HashMap<>();
 
         CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
+
+
+        //this part is just to make the code more readble
+
+        int firstNameColmn = 0, lastNameColmn = 1,
+                schoolColmn = 2, teamNumberColmn =3, levelColmn = 4;
 
 
         String[] line;
@@ -85,11 +91,22 @@ class CSVController {
         while ((line = csvReader.readNext()) != null) {
 
 
-            if (line.length >= 4) {
+            // you may need to consider what happens if cells were empty
+            if (line.length >= 5) {
 
-                Integer teamNumber = ModelController.extractNumber(line[2]);
-                Student newStd = new Student(line[0].trim(), line[1].trim(), line[3].trim());
 
+                String studentName = line[firstNameColmn].trim() + " " + line[lastNameColmn].trim();
+
+                Integer teamNumber = ModelController.extractNumber(line[teamNumberColmn]);
+
+                if(teamNumber == 0)
+                    continue;
+
+                //create student object with provided info
+                Student newStd = new Student(studentName,
+                                        line[schoolColmn].trim(), line[levelColmn].trim());
+
+                //find team and assign it
                 if(teams.containsKey(teamNumber))
                     teams.get(teamNumber).addMember(newStd);
                 else {
@@ -372,7 +389,7 @@ class CSVController {
         CSVReader csvReader = new CSVReader(reader, ',');
 
         String[] line;
-        String[] order1 = {"Name", "School", "Team#", "Level"};
+        String[] order1 = {"FirstName", "LastName", "School", "Team#", "Level"};
         String[] order2 = {"Team#", "P1", "P2", "P3", "P4", "P5", "P6"};
 
 
@@ -382,22 +399,12 @@ class CSVController {
             printList(line);
 
 
-            if (line.length == 4) {
-
-                boolean isStudentsInfo = order1[0].equals(line[0]) &&
-                        order1[1].equals(line[1]) &&
-                        order1[2].equals(line[2]) &&
-                        order1[3].equals(line[3]);
-
-                if (isStudentsInfo)
-                    return FileType.studentsInformation;
-
-            } else if (line.length == 7) {
+            if (line.length >= 7) {
 
 
                 boolean isJudgesInfo =
 
-                                order2[0].equals(line[0]) &&
+                        order2[0].equals(line[0]) &&
                                 order2[1].equals(line[1]) &&
                                 order2[2].equals(line[2]) &&
                                 order2[3].equals(line[3]) &&
@@ -409,6 +416,20 @@ class CSVController {
                     return FileType.judgesFile;
 
             }
+
+            if (line.length >= 5) {
+
+                boolean isStudentsInfo = order1[0].equals(line[0]) &&
+                        order1[1].equals(line[1]) &&
+                        order1[2].equals(line[2]) &&
+                        order1[3].equals(line[3]) &&
+                        order1[4].equals(line[4]) ;
+
+                if (isStudentsInfo)
+                    return FileType.studentsInformation;
+
+            }
+
 
         }
 
